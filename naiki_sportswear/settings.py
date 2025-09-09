@@ -30,8 +30,7 @@ SECRET_KEY = 'django-insecure-*oiy*_8_#y%kukr@z-#xb@k-_v*enxwiz)n%jj&unqu1f70$l=
 PRODUCTION = os.getenv('PRODUCTION', 'False').lower() == 'true'
 DEBUG = True
 
-ALLOWED_HOSTS = ["localhost", "152.118.29.139", "https://muhammad-qowiy-naikisportswear.pbp.cs.ui.ac.id/"]
-
+ALLOWED_HOSTS = ["localhost", "152.118.29.139", "muhammad-qowiy-naikisportswear.pbp.cs.ui.ac.id"]
 
 # Application definition
 
@@ -143,3 +142,8 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+INSTALLED_APPS = [
+    ...,
+    'main'
+]
