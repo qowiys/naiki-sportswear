@@ -3,7 +3,6 @@ from django.shortcuts import render
 # Create your views here.
 def show_main(request):
     context = {
-        'aplikasi' : 'Naiki Sportswear',
         'name': 'Muhammad Qowiy Shabir',
         'class': 'PBP E'
     }
