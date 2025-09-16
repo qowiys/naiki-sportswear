@@ -22,6 +22,7 @@ class Product(models.Model):
     views = models.PositiveIntegerField(default=0)
     created_at = models.DateTimeField(auto_now_add=True)
     is_featured = models.BooleanField(default=False)
+    views = models.IntegerField(default=0)
 
     def __str__(self):
         return self.name
