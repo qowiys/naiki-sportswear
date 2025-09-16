@@ -32,6 +32,10 @@ DEBUG = True
 
 ALLOWED_HOSTS = ["localhost", "152.118.29.139", "muhammad-qowiy-naikisportswear.pbp.cs.ui.ac.id"]
 
+CSRF_TRUSTED_ORIGINS = [
+    "https://muhammad-qowiy-naikisportswear.pbp.cs.ui.ac.id"
+]
+
 # Application definition
 
 INSTALLED_APPS = [
@@ -59,7 +63,7 @@ ROOT_URLCONF = 'naiki_sportswear.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [BASE_DIR / 'templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
