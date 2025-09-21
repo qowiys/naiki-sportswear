@@ -1,10 +1,11 @@
-from django.db import models
-
 # Create your models here.
 import uuid
 from django.db import models
+from django.contrib.auth.models import User
 
 class Product(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE, null=True)
+
     CATEGORY_CHOICES = [
         ('shoes', 'Shoes'),
         ('jersey', 'Jersey'),
@@ -29,7 +30,7 @@ class Product(models.Model):
 
     @property
     def is_popular(self):
-        return self.views > 50  # contoh: produk dianggap populer jika sudah 50x dilihat
+        return self.views > 50
 
     def increment_views(self):
         self.views += 1
