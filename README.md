@@ -114,3 +114,80 @@ Contoh eksploitasi sederhana:
 6. Sejauh ini belum ada feedback karena asisten dosen sudah membuat petunjuk-petunjuk tutorial 2 mudah dimengerti
 
 Screenshot Postman : https://drive.google.com/drive/folders/1yB9Gha4R16czTbWZ1H9L8eeoViuKQXVZ?usp=sharing
+
+Tugas 4
+
+1. AuthenticationForm adalah form bawaan Django yang digunakan untuk proses login user. Form ini disediakan oleh django.contrib.auth.forms, dan biasanya dipakai bersama view LoginView.
+
+Fungsinya:
+- Menerima input username dan password.
+- Melakukan validasi apakah user ada di database.
+- Mengecek apakah password sesuai.
+- Mengecek apakah akun user aktif.
+
+Kelebihan:
+- Sudah terintegrasi penuh dengan sistem autentikasi Django.
+- Menghemat waktu (tidak perlu membuat form login dari nol).
+- Otomatis melakukan validasi standar (username, password, user aktif).
+- Bisa dikustomisasi (misalnya menambah field atau mengganti widget).
+
+Kekurangan:
+- Terbatas pada field username & password bawaan (butuh override jika ingin login dengan email, OTP, dsb).
+- Tampilan standar sangat sederhana, biasanya butuh kustomisasi agar sesuai desain UI.
+
+2. Autentikasi (Authentication):
+Proses memverifikasi identitas user. Contoh: mengecek apakah username/password benar.
+
+Otorisasi (Authorization):
+Proses menentukan apa yang boleh dilakukan user setelah terautentikasi. Contoh: admin boleh menghapus data, user biasa hanya bisa membaca.
+
+Implementasi di Django:
+
+Autentikasi:
+- Menggunakan django.contrib.auth.authenticate() untuk validasi user.
+- Login dilakukan dengan login(request, user).
+- Logout dilakukan dengan logout(request).
+
+Otorisasi:
+- Sistem permissions (izin) dan groups.
+- @login_required decorator → hanya user login yang bisa akses view.
+- @permission_required('app.permission') atau user.has_perm() → membatasi akses tertentu.
+- is_staff, is_superuser → kontrol akses global.
+
+3. Cookies: Data disimpan langsung di browser user.
+
+Kelebihan:
+- Ringan di server (data ada di client).
+- Mudah diakses oleh client-side script (misalnya JavaScript).
+
+Kekurangan:
+- Lebih rentan dicuri (misalnya XSS).
+- Kapasitas terbatas (~4KB per cookie).
+- Bisa dimodifikasi user.
+
+Session: Data disimpan di server, browser hanya menyimpan session ID (biasanya dalam cookie).
+
+Kelebihan:
+- Lebih aman (data asli ada di server, bukan di client).
+- Bisa menyimpan data lebih banyak dan kompleks.
+
+Kekurangan:
+- Membebani server (butuh storage untuk tiap session user).
+- Jika session hilang/expire, user harus login ulang.
+
+4. Tidak sepenuhnya aman. Cookies bisa rentan terhadap:
+- XSS (Cross Site Scripting): attacker bisa mencuri cookie jika tidak di-protect.
+- Session hijacking: jika cookie session dicuri, attacker bisa login sebagai user.
+- CSRF (Cross Site Request Forgery): attacker bisa menyalahgunakan session aktif user.
+
+Bagaimana Django mengatasinya:
+- Menggunakan HttpOnly=True → cookie tidak bisa diakses oleh JavaScript.
+- Menggunakan Secure=True → cookie hanya dikirim lewat HTTPS.
+- CSRF protection bawaan ({% csrf_token %} di form).
+- SESSION_COOKIE_AGE → mengatur masa berlaku session.
+- SESSION_ENGINE → bisa simpan session di database, cache, atau file.
+
+5. - Menambahkan import dan fungsi pada views.py untuk menerapkan register, login, dan logout
+   - Menambahkan file html baru untuk register dan login
+   - Menambahkan import dan path di urls.py
+   - Menghubungkan model Product dengan User
