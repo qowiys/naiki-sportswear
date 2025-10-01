@@ -19,16 +19,20 @@
     <!-- Filter Section -->
     <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-8 bg-gray-700 rounded-lg border border-gray-600 p-4">
       <div class="flex space-x-3 mb-4 sm:mb-0">
-        <a href="?" class="{% if request.GET.filter == 'all' or not request.GET.filter  %} bg-red-600 text-white{% else %}bg-gray-600 text-white border border-gray-500{% endif %} px-4 py-2 rounded-md font-medium transition-colors hover:bg-red-600 hover:text-white">
+        <a href="?filter=all" 
+           class="{% if request.GET.filter == 'all' or not request.GET.filter %} bg-red-600 text-white{% else %}bg-gray-600 text-white border border-gray-500{% endif %} 
+                  px-4 py-2 rounded-md font-medium transition-colors hover:bg-red-600 hover:text-white">
           All Product
         </a>
-        <a href="?filter=my" class="{% if request.GET.filter == 'my' %} bg-red-600 text-white{% else %}bg-gray-600 text-white border border-gray-500{% endif %} px-4 py-2 rounded-md font-medium transition-colors hover:bg-red-600 hover:text-white">
+        <a href="?filter=my" 
+           class="{% if request.GET.filter == 'my' %} bg-red-600 text-white{% else %}bg-gray-600 text-white border border-gray-500{% endif %} 
+                  px-4 py-2 rounded-md font-medium transition-colors hover:bg-red-600 hover:text-white">
           My Product
         </a>
       </div>
       {% if user.is_authenticated %}
         <div class="text-sm text-gray-400">
-          Last login: {{ last_login }}
+          Last login: {{ user.last_login }}
         </div>
       {% endif %}
     </div>

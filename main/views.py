@@ -132,3 +132,12 @@ def delete_product(request, id):
     product = get_object_or_404(Product, pk=id)
     product.delete()
     return HttpResponseRedirect(reverse('main:show_main'))
+
+def category_view(request, category_name):
+    product_list = Product.objects.filter(category=category_name)
+
+    context = {
+        "category": category_name.capitalize(),
+        "product_list": product_list,
+    }
+    return render(request, "category.html", context)

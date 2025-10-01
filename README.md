@@ -1,6 +1,8 @@
 Repo : https://github.com/qowiys/naiki-sportswear
 Web : muhammad-qowiy-naikisportswear.pbp.cs.ui.ac.id
 
+=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+
 Tugas 2
 
 1. - Buat projek django dengan menjalankan command 'django-admin startproject naiki_sportswear' di terminal
@@ -73,6 +75,8 @@ Peran: representasi tampilan. Template menerima context dari view untuk di-rende
 
 6. Sejauh ini belum ada feedback karena asisten dosen sudah membuat petunjuk-petunjuk tutorial 1 mudah dimengerti
 
+=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+
 Tugas 3
 
 1. Data delivery di sini berarti mekanisme mengirim dan menyinkronkan data antar komponen (API → front-end, service → service, pihak ketiga seperti kurir, dsb). Tanpa mekanisme delivery yang jelas, fitur seperti notifikasi order, sinkron stok, atau webhook ke kurir akan rentan terlambat, tidak konsisten, atau gampang gagal.
@@ -114,6 +118,8 @@ Contoh eksploitasi sederhana:
 6. Sejauh ini belum ada feedback karena asisten dosen sudah membuat petunjuk-petunjuk tutorial 2 mudah dimengerti
 
 Screenshot Postman : https://drive.google.com/drive/folders/1yB9Gha4R16czTbWZ1H9L8eeoViuKQXVZ?usp=sharing
+
+=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
 
 Tugas 4
 
@@ -191,3 +197,57 @@ Bagaimana Django mengatasinya:
    - Menambahkan file html baru untuk register dan login
    - Menambahkan import dan path di urls.py
    - Menghubungkan model Product dengan User
+
+=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+
+Tugas 5
+
+1. Ketika ada beberapa CSS selector yang berlaku pada elemen yang sama, browser menggunakan CSS Specificity (tingkat kekhususan) untuk menentukan aturan mana yang dipakai. Urutannya adalah:
+
+- Inline Style
+- External dan internal style sheets
+- Browser default
+
+2. Responsive design = desain web yang bisa menyesuaikan tampilan sesuai ukuran layar perangkat (HP, tablet, laptop, monitor besar).
+
+Alasan Penting:
+
+- Pengguna mengakses web dari berbagai perangkat → tampilan harus tetap nyaman.
+- Meningkatkan pengalaman pengguna (user experience).
+
+Sudah menerapkan:
+
+- Instagram Web → jika dibuka di HP atau laptop, layout menyesuaikan (feed tetap rapi, tombol navigasi bergeser).
+- Tokopedia → versi mobile dan desktop menyesuaikan ukuran produk, tombol, dan font.
+
+Belum menerapkan:
+- Website lama yang masih fixed width → misalnya situs organisasi lama yang kalau dibuka di HP harus zoom in/out untuk membaca.
+
+3. Perbedaan :
+
+- Margin
+      div {
+         margin: 20px; /* jarak luar */
+      }
+- Border
+      div {
+         border: 2px solid black; /* garis hitam */
+      }
+- Padding
+      div {
+         padding: 15px; /* jarak isi dengan tepi */
+      }
+
+4. Flexbox
+  - Digunakan untuk mengatur layout satu dimensi (baris row atau kolom column).
+  - Sangat berguna untuk aligning dan distribusi ruang antar elemen.
+
+   Grid Layout
+  - Digunakan untuk membuat layout dua dimensi (baris dan kolom).
+  - Lebih cocok untuk desain kompleks seperti dashboard, galeri, atau struktur halaman penuh.
+
+5. 
+- Menambahkan fungsi edit dan delete di views.py
+- Menambahkan path edit dan delete di urls.py
+- Menambahkan navbar.html di root template
+- Mengubah semua html untuk menambahkan design
