@@ -251,3 +251,60 @@ Belum menerapkan:
 - Menambahkan path edit dan delete di urls.py
 - Menambahkan navbar.html di root template
 - Mengubah semua html untuk menambahkan design
+
+=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+
+Tugas 6
+
+1. 
+
+Synchronous = menunggu respons server sampai selesai.
+Asynchronous = kirim dan lanjut tanpa menunggu.
+
+2. Alur kerja AJAX di Django :
+
+- User melakukan aksi di halaman web (misalnya klik tombol atau submit form via JavaScript).
+- JavaScript di sisi client mengirim request AJAX ke endpoint Django (misalnya URL /check_username/ atau /api/register/) menggunakan fetch() atau $.ajax().
+- Django menerima request tersebut seperti biasa, biasanya di views.py.
+- View akan mendeteksi bahwa request adalah AJAX (request.headers.get('x-requested-with') == 'XMLHttpRequest').
+- View memproses data (misalnya cek database, validasi input, dll).
+- Django mengembalikan JSON response (JsonResponse({...})) tanpa render template HTML penuh.
+- JavaScript menerima JSON response, lalu memperbarui tampilan halaman (misalnya menampilkan pesan “username tersedia” atau menambahkan item ke tabel).
+
+3. Keuntungan :
+
+- Lebih cepat dan efisien
+- UX lebih baik
+- Interaktif & real-time
+- Lebih hemat bandwidth
+
+4. 
+
+- Gunakan CSRF Token
+      Django memiliki proteksi bawaan csrf_token.
+      Saat mengirim request AJAX POST, sertakan header:
+
+      headers: {
+      "X-CSRFToken": getCookie('csrftoken'),
+      }
+
+      Gunakan {% csrf_token %} di template agar Django mengenali token.
+
+- Gunakan HTTPS
+      Agar data login/register (termasuk password) tidak mudah disadap.
+
+- Validasi input di server
+      Jangan bergantung pada validasi di JavaScript saja; Django harus tetap memvalidasi di sisi backend.
+
+- Batasi endpoint AJAX
+      Jangan biarkan endpoint AJAX terbuka untuk publik tanpa otentikasi (gunakan @login_required jika perlu).
+
+- Gunakan JsonResponse yang aman
+      Hindari mengembalikan data sensitif seperti password, token internal, atau data user lain.
+
+5. 
+
+- Responsif dan lebih cepat
+- Lebih interaktif
+- Minim gangguan
+- Lebih dinamis
