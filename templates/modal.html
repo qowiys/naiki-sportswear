@@ -1,15 +1,15 @@
 <!-- Modal -->
-<div id="crudModal" class="hidden fixed inset-0 z-50 w-full flex items-center justify-center bg-gray-800 bg-opacity-50">
-  <div id="crudModalContent" class="bg-gray rounded-lg shadow-lg w-5/6 sm:w-3/5 md:w-1/2 lg:w-2/5 xl:w-1/3 max-h-screen overflow-y-auto">
+<div id="crudModal" class="hidden fixed inset-0 z-50 w-full flex items-center justify-center bg-gray-900 bg-opacity-90 transition-opacity duration-300">
+  <div id="crudModalContent" class="bg-gray-800 rounded-lg shadow-lg w-5/6 sm:w-3/5 md:w-1/2 lg:w-2/5 xl:w-1/3 max-h-screen overflow-y-auto transform transition-all duration-300 opacity-0 scale-95 border border-gray-700">
     <!-- Modal header -->
-    <div class="flex items-center justify-between p-4 border-b">
+    <div class="flex items-center justify-between p-4 border-b border-gray-700">
       <div>
-        <h3 class="text-xl font-semibold text-gray-900">
+        <h3 class="text-xl font-semibold text-white">
           Add New Product
         </h3>
-        <p class="text-sm text-gray-600 mt-1">Add your product</p>
+        <p class="text-sm text-gray-400 mt-1">Add your product</p>
       </div>
-      <button type="button" class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center" onclick="hideModal()">
+      <button type="button" class="text-gray-400 bg-transparent hover:bg-gray-700 hover:text-white rounded-lg text-sm p-1.5 ml-auto inline-flex items-center" onclick="hideModal()">
         <svg aria-hidden="true" class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
           <path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"></path>
         </svg>
@@ -19,40 +19,55 @@
     <!-- Modal body -->
     <div class="px-6 py-4 space-y-6 form-style">
       <form id="productForm">
+        <!-- Name Field -->
         <div class="mb-4">
-          <label for="name" class="block text-sm font-medium text-gray-700">Name</label>
-          <input type="text" id="name" name="name" class="mt-1 block w-full border border-gray-300 rounded-md px-3 py-2" placeholder="Enter product name" required>
+          <label for="name" class="block text-sm font-medium text-gray-300">Name</label>
+          <input type="text" id="name" name="name" class="mt-1 block w-full bg-gray-700 border border-gray-600 text-white rounded-md px-3 py-2 focus:ring-red-500 focus:border-red-500 placeholder-gray-400" placeholder="Enter product name" required>
         </div>
+        
+        <!-- Price Field -->
         <div class="mb-4">
-          <label for="content" class="block text-sm font-medium text-gray-700">Content</label>
-          <textarea id="content" name="content" rows="3" class="mt-1 block w-full border border-gray-300 rounded-md px-3 py-2" placeholder="Enter product content" required></textarea>
+          <label for="price" class="block text-sm font-medium text-gray-300">Price</label>
+          <input type="number" id="price" name="price" step="1000" min="0" class="mt-1 block w-full bg-gray-700 border border-gray-600 text-white rounded-md px-3 py-2 focus:ring-red-500 focus:border-red-500 placeholder-gray-400" placeholder="Enter product price" required>
         </div>
+        
+        <!-- Description Field (DIPERBAIKI: name="content" → name="description") -->
         <div class="mb-4">
-          <label for="description" class="block text-sm font-medium text-gray-700">Description</label>
-          <select id="description" name="description" class="mt-1 block w-full border border-gray-300 rounded-md px-3 py-2" required>
-            <option value="">Choose a category</option>
-            <option value="shoes">Shoes</option>
-            <option value="jersey">Jersey</option>
-            <option value="equipment">Equipment</option>
-            <option value="accessories">Accessories</option>
-            <option value="training">Training</option>
+          <label for="description" class="block text-sm font-medium text-gray-300">Description</label>
+          <textarea id="description" name="description" rows="3" class="mt-1 block w-full bg-gray-700 border border-gray-600 text-white rounded-md px-3 py-2 focus:ring-red-500 focus:border-red-500 placeholder-gray-400" placeholder="Enter product description" required></textarea>
+        </div>
+        
+        <!-- Category Field (DIPERBAIKI: name="description" → name="category") -->
+        <div class="mb-4">
+          <label for="category" class="block text-sm font-medium text-gray-300">Category</label>
+          <select id="category" name="category" class="mt-1 block w-full bg-gray-700 border border-gray-600 text-white rounded-md px-3 py-2 focus:ring-red-500 focus:border-red-500" required>
+            <option value="" class="bg-gray-700">Choose a category</option>
+            <option value="shoes" class="bg-gray-700">Shoes</option>
+            <option value="jersey" class="bg-gray-700">Jersey</option>
+            <option value="equipment" class="bg-gray-700">Equipment</option>
+            <option value="accessories" class="bg-gray-700">Accessories</option>
+            <option value="training" class="bg-gray-700">Training</option>
           </select>
         </div>
+        
+        <!-- Thumbnail URL Field -->
         <div class="mb-4">
-          <label for="thumbnail" class="block text-sm font-medium text-gray-700">Thumbnail URL</label>
-          <input type="url" id="thumbnail" name="thumbnail" class="mt-1 block w-full border border-gray-300 rounded-md px-3 py-2" placeholder="https://example.com/image.jpg">
+          <label for="thumbnail" class="block text-sm font-medium text-gray-300">Thumbnail URL</label>
+          <input type="url" id="thumbnail" name="thumbnail" class="mt-1 block w-full bg-gray-700 border border-gray-600 text-white rounded-md px-3 py-2 focus:ring-red-500 focus:border-red-500 placeholder-gray-400" placeholder="https://example.com/image.jpg">
         </div>
+        
+        <!-- Featured Checkbox -->
         <div class="mb-4">
           <div class="flex items-center">
-            <input id="is_featured" name="is_featured" type="checkbox" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded">
-            <label for="is_featured" class="ml-2 text-sm font-medium text-gray-900">Featured Product</label>
+            <input id="is_featured" name="is_featured" type="checkbox" value="on" class="w-4 h-4 text-red-600 bg-gray-700 border-gray-600 rounded focus:ring-red-500">
+            <label for="is_featured" class="ml-2 text-sm font-medium text-gray-300">Featured Product</label>
           </div>
         </div>
       </form>
     </div>
     <!-- Modal footer -->
-    <div class="flex flex-col sm:flex-row gap-4 p-6 border-t border-gray-200 rounded-b">
-      <button type="button" id="cancelButton" class="order-2 sm:order-1 px-6 py-3 border border-gray-300 text-gray-700 rounded-md font-medium hover:bg-gray-50 transition-colors text-center" onclick="hideModal()">Cancel</button>
+    <div class="flex flex-col sm:flex-row gap-4 p-6 border-t border-gray-700 rounded-b">
+      <button type="button" id="cancelButton" class="order-2 sm:order-1 px-6 py-3 border border-gray-600 text-gray-300 rounded-md font-medium hover:bg-gray-700 hover:text-white transition-colors text-center" onclick="hideModal()">Cancel</button>
       <button type="submit" id="submitProduct" form="productForm" class="order-1 sm:order-2 flex-1 bg-red-600 text-white px-6 py-3 rounded-md font-medium hover:bg-red-700 transition-colors">Publish Product</button>
     </div>
   </div>
@@ -82,22 +97,58 @@
       }, 150); 
   }
 
-   async function addProductEntry() {
-    await fetch("{% url 'main:add_product_entry_ajax' %}", {
-      method: "POST",
-      body: new FormData(document.querySelector('#productForm')),
-    })
-
-    document.getElementById("productForm").reset();
-    hideModal();
+  async function addProductEntry() {
+    try {
+      const formData = new FormData(document.querySelector('#productForm'));
       
-    // Show toast notification
-    showToast('Product added successfully!', '', 'success');
+      // Debug: Log form data
+      console.log('Sending form data:');
+      for (let [key, value] of formData.entries()) {
+        console.log(key, ':', value);
+      }
 
-    // Dispatch custom event to notify main.html about new data
-    document.dispatchEvent(new CustomEvent('productAdded'));
+      const response = await fetch("{% url 'main:add_product_entry_ajax' %}", {
+        method: "POST",
+        body: formData,
+        headers: {
+          'X-Requested-With': 'XMLHttpRequest',
+        }
+      });
+
+      if (response.ok) {
+        const result = await response.json();
+        console.log('Success:', result);
+        
+        document.getElementById("productForm").reset();
+        hideModal();
+        
+        // Refresh data produk
+        await loadProducts();
+        
+        // Show success message
+        alert('Product added successfully!');
+      } else {
+        const errorData = await response.json();
+        console.error('Server error:', errorData);
+        throw new Error(errorData.error || 'Failed to add product');
+      }
+    } catch (error) {
+      console.error('Error adding product:', error);
+      alert('Failed to add product: ' + error.message);
+    }
 
     return false;
   }
 
+  // Event listener untuk form submit
+  document.addEventListener('DOMContentLoaded', function() {
+    const productForm = document.getElementById('productForm');
+    
+    if (productForm) {
+      productForm.addEventListener('submit', function(e) {
+        e.preventDefault();
+        addProductEntry();
+      });
+    }
+  });
 </script>
